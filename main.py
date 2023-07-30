@@ -148,6 +148,9 @@ def mainProgram():
       # Sorting based on index 1 (event) and then index 3 (date)
         sorted_data = sorted(filtered_list, key=lambda x:(x[1],x[3]),reverse =False)
         print(sorted_data)
+        print("----------------")
+        print("----------------")
+        print("thise are the upcoming events sorted by date and event ID")
 
 ###################
 ######### choice 4
@@ -177,9 +180,13 @@ def mainProgram():
         print("--------------------")
         print("--------------------")
         new_priority = input("please enter the new priority you want to assign for the ticketID:")
+        print("--------------------")
+        print("--------------------")
         
         dictText[ticket_find][3] = new_priority
         print("the new information to ticket",ticket_find,"is:\n", dictText[ticket_find])
+        print("--------------------")
+        print("--------------------")
         systemDisplay()
 
 ###################
@@ -193,8 +200,13 @@ def mainProgram():
         print(remove1)
 
         if remove1 in dictText.keys():
+          print("-------------------")
+          print(dictText[remove1])
+          print("-------------------")
           del dictText[remove1]
           print(remove1,"was removed from the list")
+          print("-------------------")
+          systemDisplay()
 
         else:
           print("the ticket ID was not found")
@@ -219,9 +231,14 @@ def mainProgram():
 
 
       def choice6():
-        
+        print("The following events where booked today:")
+        print("-------------------")
         sorted_data1 = sorted(new_list, key=lambda x:int(x[4]),reverse =False)
         print(sorted_data1)
+        print("-------------------")
+        print("-------------------")
+        
+        systemDisplay()
 
       
 ###################
@@ -261,7 +278,7 @@ def mainProgram():
                 
           elif choice == 6:
             new_list=[]
-            for i in list02_copy:
+            for i in list01:
               date_str =i[3]
               date_str=date_str.strip()
 
@@ -371,7 +388,8 @@ def mainProgram():
           for ticket_id, ticket_info in dictText.items():
             line = ticket_id + "," + ",".join(ticket_info) + "\n"
             file.write(line)
-            exit()
+        
+        exit()
 
 
 ###############################

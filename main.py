@@ -71,7 +71,8 @@ def mainProgram():
 ###################
 
       def choice2():
-        ticket = "tick"+ str(len(dictText)+1)
+        list_len = str(len(dictText) +1).zfill(3)
+        ticket = "tick"+ list_len
         
 # usen the length of dictText i know how many tickits i have, put we need it in string not int
         while True :
@@ -84,10 +85,12 @@ def mainProgram():
 #Python 3 - String zfill() Method. (n.d.). Tutorialspoint. https://www.tutorialspoint.com/python3/string_zfill.htm
 
               else: 
-                print("invalid input,Please enter a valid event ID")
+                print("invalid input,Please enter a valid event ID, choose among the events provided for the time being")
+                print("----------------------")
+                print("----------------------")
 
           except ValueError:
-            print("INvalid input, please enter a valid integer")
+            print("INvalid input, please enter a valid event ID")
       
         username = input("enter the username:")
 
@@ -123,9 +126,12 @@ def mainProgram():
         date1 = date_year2 + date_month2 + date_day2   
         
         priority = input("Enter the priority:") 
-        new_ticket_info = [ticket, event_id, username, date1, priority]
+        new_ticket_info = [event_id, username, date1, priority]
         dictText[ticket] = tuple(new_ticket_info)
+        print("------------")
         print(dictText[ticket])
+        print("------------")
+        print("the ticketID corresponding to the above info is: ",ticket)
         systemDisplay()
 
 ###################
@@ -291,7 +297,17 @@ def mainProgram():
                 
           elif choice == 7:
             print("Exiting the program. Goodbye!")
-            exit()
+            saving = input("do you want to save the changes ? ")
+            if saving == "yes" or saving == "YES" or saving=="Yes" or saving=="y" or saving=="Y":
+              with open("text_file1.txt", "w") as file:
+                for ticket_id, ticket_info in dictText.items():
+                  line = ticket_id + "," + ",".join(ticket_info) + "\n"
+                  file.write(line)
+                
+              exit()
+            else:
+              exit()
+          
           else:
             print("Invalid choice. Please try again.")
             systemDisplay()
@@ -323,7 +339,8 @@ def mainProgram():
 ######### choice 1 user
 #######################
       def choice1_user():
-        ticket = "tick"+ str(len(dictText)+1)
+        list_len = str(len(dictText) +1).zfill(3)
+        ticket = "tick"+ list_len
         
 # usen the length of dictText i know how many tickits i have, put we need it in string not int
         while True :
@@ -336,10 +353,12 @@ def mainProgram():
 #Python 3 - String zfill() Method. (n.d.). Tutorialspoint. https://www.tutorialspoint.com/python3/string_zfill.htm
 
               else: 
-                print("invalid input,Please enter a valid event ID")
+                print("invalid input,Please enter a valid event ID, please choose among the events provided")
+                print("----------------------")
+                print("----------------------")
 
           except ValueError:
-            print("INvalid input, please enter a valid integer")
+            print("INvalid input, please enter a valid event ID")
       
         username = user_name1
 
@@ -375,9 +394,12 @@ def mainProgram():
         date1 = date_year2 + date_month2 + date_day2   
         
         priority = ("0")
-        new_ticket_info = [ticket, event_id, username, date1, priority]
+        new_ticket_info = [ event_id, username, date1, priority]
         dictText[ticket] = tuple(new_ticket_info)
+        print("------------")
         print(dictText[ticket])
+        print("------------")
+        print("the ticketID corresponding to the above info is: ",ticket)
         menueOption()
 
 #######################
